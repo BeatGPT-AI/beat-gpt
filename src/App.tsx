@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
 import Settings from "./pages/Settings";
 import Admin from "./pages/Admin";
+import CustomGPTs from "./pages/CustomGPTs";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/chat/:conversationId" element={session ? <Chat /> : <Navigate to="/login" />} />
             <Route path="/settings" element={session ? <Settings /> : <Navigate to="/login" />} />
             <Route path="/admin" element={session ? <Admin /> : <Navigate to="/login" />} />
+            <Route path="/gpts" element={session ? <CustomGPTs /> : <Navigate to="/login" />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
