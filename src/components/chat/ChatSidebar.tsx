@@ -74,6 +74,14 @@ export default function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
         </div>
 
         <ScrollArea className="flex-1 p-2">
+          <Button
+            variant="ghost"
+            className="w-full justify-start mb-4"
+            onClick={() => navigate("/gpts")}
+          >
+            <MessageSquare className="mr-2 h-4 w-4" />
+            Custom GPTs
+          </Button>
           <div className="space-y-2">
             {conversations?.map((conversation) => (
               <Button
