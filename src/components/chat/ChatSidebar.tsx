@@ -60,34 +60,42 @@ export default function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
       <div
         className={`${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed md:relative md:translate-x-0 transition-transform duration-200 z-40 w-64 h-full bg-secondary border-r border-border flex flex-col`}
+        } fixed md:relative md:translate-x-0 transition-transform duration-200 z-40 w-64 h-full bg-[#0a0a0a] border-r border-[#2a2a2a] flex flex-col`}
       >
-        <div className="p-4 border-b border-border">
-          <div className="flex items-center gap-2 mb-4">
-            <MessageSquare className="h-6 w-6 text-primary" />
-            <span className="font-bold text-lg">BeatGPT</span>
-          </div>
-          <Button onClick={handleNewChat} className="w-full" size="sm">
+        <div className="p-4 border-b border-[#2a2a2a]">
+          <Button
+            onClick={() => navigate("/gpts")}
+            variant="ghost"
+            className="w-full justify-start mb-4 hover:bg-[#1a1a1a]"
+          >
+            <MessageSquare className="mr-2 h-4 w-4" />
+            GPTs
+          </Button>
+          <Button onClick={handleNewChat} className="w-full bg-[#1a1a1a] hover:bg-[#2a2a2a]" size="sm">
             <Plus className="mr-2 h-4 w-4" />
-            New Chat
+            New chat
           </Button>
         </div>
 
         <ScrollArea className="flex-1 p-2">
-          <Button
-            variant="ghost"
-            className="w-full justify-start mb-4"
-            onClick={() => navigate("/gpts")}
-          >
-            <MessageSquare className="mr-2 h-4 w-4" />
-            Custom GPTs
-          </Button>
-          <div className="space-y-2">
+          <div className="mb-4 px-3">
+            <input 
+              type="text" 
+              placeholder="Search chats" 
+              className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50"
+            />
+          </div>
+
+          <div className="px-2 mb-2">
+            <p className="text-xs font-semibold text-muted-foreground uppercase">Chats</p>
+          </div>
+          
+          <div className="space-y-1">
             {conversations?.map((conversation) => (
               <Button
                 key={conversation.id}
                 variant="ghost"
-                className="w-full justify-start text-left"
+                className="w-full justify-start text-left hover:bg-[#1a1a1a] text-sm"
                 onClick={() => navigate(`/chat/${conversation.id}`)}
               >
                 <MessageSquare className="mr-2 h-4 w-4 flex-shrink-0" />
@@ -97,23 +105,19 @@ export default function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
           </div>
         </ScrollArea>
 
-        <div className="p-4 border-t border-border space-y-2">
-          <Button
-            variant="ghost"
-            className="w-full justify-start"
-            onClick={() => navigate("/settings")}
-          >
-            <Settings className="mr-2 h-4 w-4" />
-            Settings
-          </Button>
-          <Button
-            variant="ghost"
-            className="w-full justify-start"
-            onClick={handleLogout}
-          >
-            <LogOut className="mr-2 h-4 w-4" />
-            Logout
-          </Button>
+        <div className="p-4 border-t border-[#2a2a2a] mt-auto">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <span className="text-sm font-semibold text-white">G</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground truncate">Gianni Clauw</p>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                <span className="text-xs text-yellow-500">Premium</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

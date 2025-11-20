@@ -13,6 +13,8 @@ import Chat from "./pages/Chat";
 import Settings from "./pages/Settings";
 import Admin from "./pages/Admin";
 import CustomGPTs from "./pages/CustomGPTs";
+import Subscription from "./pages/Subscription";
+import Tickets from "./pages/Tickets";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +60,8 @@ function App() {
             <Route path="/settings" element={session ? <Settings /> : <Navigate to="/login" />} />
             <Route path="/admin" element={session ? <Admin /> : <Navigate to="/login" />} />
             <Route path="/gpts" element={session ? <CustomGPTs /> : <Navigate to="/login" />} />
+            <Route path="/subscription" element={session ? <Subscription /> : <Navigate to="/login" />} />
+            <Route path="/tickets" element={session ? <Tickets /> : <Navigate to="/login" />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
