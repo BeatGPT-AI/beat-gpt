@@ -90,18 +90,17 @@ export default function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
             <p className="text-xs font-semibold text-muted-foreground uppercase">Chats</p>
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-1">
             {conversations?.map((conversation) => (
-              <div
+              <Button
                 key={conversation.id}
+                variant="ghost"
+                className="w-full justify-start text-left hover:bg-[#1a1a1a] text-sm"
                 onClick={() => navigate(`/chat/${conversation.id}`)}
-                className="p-3 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] hover:bg-[#2a2a2a] hover:border-[#3a3a3a] cursor-pointer transition-all duration-200"
               >
-                <div className="flex items-center gap-2">
-                  <MessageSquare className="h-4 w-4 flex-shrink-0 text-muted-foreground" />
-                  <span className="truncate text-sm text-foreground">{conversation.title}</span>
-                </div>
-              </div>
+                <MessageSquare className="mr-2 h-4 w-4 flex-shrink-0" />
+                <span className="truncate">{conversation.title}</span>
+              </Button>
             ))}
           </div>
         </ScrollArea>
